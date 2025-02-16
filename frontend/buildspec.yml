@@ -5,12 +5,16 @@ phases:
     commands:
       - echo "Installing dependencies"
       - npm install
-
   build:
     commands:
       - echo "Building project"
       - npm run build
+  post_build:
+    commands:
+      - echo "Zipping build files"
+      - zip -r frontend.zip build/*
 
 artifacts:
   files:
-    - '**/*'
+    - frontend.zip
+  discard-paths: yes
