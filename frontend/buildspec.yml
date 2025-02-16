@@ -16,9 +16,11 @@ phases:
   post_build:
     commands:
       - echo "Zipping build files"
-      - zip -r frontend.zip build/*
+      - cd build
+      - zip -r ../frontend.zip .  # Fix: Create zip in the parent directory
+      - cd ..
 
 artifacts:
   files:
-    - frontend.zip
+    - frontend.zip  # Fix: Make sure this matches the created zip file
   discard-paths: yes
