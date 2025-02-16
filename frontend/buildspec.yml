@@ -3,12 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "Switching to frontend directory"
+      - cd frontend || exit 1
       - echo "Installing dependencies"
       - npm install
+
   build:
     commands:
       - echo "Building project"
       - npm run build
+
   post_build:
     commands:
       - echo "Zipping build files"
