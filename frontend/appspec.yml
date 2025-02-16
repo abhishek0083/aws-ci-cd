@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/frontend
+    overwrite: true
+
+hooks:
+  BeforeInstall:
+    - location: scripts/stop_service.sh
+      timeout: 300
+  AfterInstall:
+    - location: scripts/start_service.sh
+      timeout: 300
