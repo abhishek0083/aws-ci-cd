@@ -3,6 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "Navigating to frontend directory"
+      - cd frontend || exit 1
       - echo "Installing dependencies"
       - npm install
 
@@ -15,12 +17,12 @@ phases:
     commands:
       - echo "Zipping build files"
       - cd build
-      - zip -r ../frontend.zip .  # ✅ This ensures the zip file is in the correct directory
+      - zip -r ../frontend.zip .  # ✅ This ensures the zip file is in the correct location
       - cd ..
       - ls -lh  # ✅ Debugging: List files to check if frontend.zip exists
 
 artifacts:
   files:
-    - frontend.zip   # ✅ Ensure this matches the created zip file name
+    - frontend.zip  # ✅ Ensure this matches the created zip file name
   base-directory: .  # ✅ Explicitly tell CodeBuild where to look for frontend.zip
   discard-paths: yes
