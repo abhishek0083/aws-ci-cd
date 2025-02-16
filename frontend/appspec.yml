@@ -1,5 +1,6 @@
 version: 0.0
 os: linux
+
 files:
   - source: /
     destination: /home/ubuntu/frontend
@@ -9,6 +10,9 @@ hooks:
   BeforeInstall:
     - location: scripts/stop_service.sh
       timeout: 300
+      runas: ubuntu  # Optional: Ensures the script runs as the correct user
+
   AfterInstall:
     - location: scripts/start_service.sh
       timeout: 300
+      runas: ubuntu  # Optional: Ensures the script runs as the correct user
